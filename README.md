@@ -1,6 +1,3 @@
-
-My name is Plamen
-
 My name is Plamen
 
 My name is Vova
