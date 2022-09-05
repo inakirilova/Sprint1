@@ -1,6 +1,8 @@
 # Default ignored files
 /shelf/
 *.xml
-.idea
+.idea/
+*.name
+*.iml
 libraries/
 target/

@@ -1,6 +1,7 @@
 
+
 public class Board {
-    static String[][] boardCreate(int height, int width) {
+    public static String[][] boardCreate(int height, int width) {
         String[][] matrix = new String[height][width];
         boolean blackCell = true;
         for (int i = 0; i < matrix.length; i++) {

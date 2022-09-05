@@ -11,8 +11,17 @@ public class BoardTests {
     }
 
     @Test
-    public void testBoardCells() {
+    public void testBoardCellsFirstRow() {
         Assert.assertEquals("*", newBoard[0][0]);
+        Assert.assertEquals(" ", newBoard[0][1]);
+        Assert.assertEquals("*", newBoard[0][2]);
+    }
+
+    @Test
+    public void testBoardCellsSecondRow() {
+        Assert.assertEquals(" ", newBoard[1][0]);
+        Assert.assertEquals("*", newBoard[1][1]);
+        Assert.assertEquals(" ", newBoard[1][2]);
     }
 
     @Test(expected = NegativeArraySizeException.class)
