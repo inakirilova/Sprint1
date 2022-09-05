@@ -7,13 +7,12 @@ public class RequestData {
         Scanner scanner = new Scanner(System.in);
         System.out.printf(ConstantMessages.DATA_REQUEST, envelope, side);
         String envelopeSideInput = scanner.nextLine();
-        float envelopeSide;
+
         while (!DataValidator.isValidNumber(envelopeSideInput)) {
             System.out.println(ConstantMessages.INVALID_INPUT);
             envelopeSideInput = scanner.nextLine();
         }
-        envelopeSide = Float.parseFloat(envelopeSideInput);
-        return envelopeSide;
+        return Float.parseFloat(envelopeSideInput);
     }
 
 }
