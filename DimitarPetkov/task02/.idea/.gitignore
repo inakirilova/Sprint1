@@ -2,3 +2,6 @@
 /shelf/
 *.xml
 .idea
+.idea
+*.xml
+target/

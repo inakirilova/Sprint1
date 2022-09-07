@@ -2,4 +2,6 @@
 /shelf/
 *.xml
 libraries/
+.idea/
+*.xml
 target/
