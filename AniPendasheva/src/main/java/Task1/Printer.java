@@ -3,10 +3,18 @@ package Task1;
 import static Task1.InputValidator.areNumsPositive;
 
 public class Printer {
-    public static void drawChessBoard(int height, int width) {
+    public static String drawChessBoard(int height, int width) {
+        StringBuilder sb = new StringBuilder();
         try {
-            areNumsPositive(height,width);
-            for (int i = 0, j = 0; i < height && j <= width; ) {
+            areNumsPositive ( height, width);
+            if ( height < 0) {
+               sb.append("Please give valid height");
+            }
+            if ( height < 0) {
+                sb.append("Please give valid width");
+            }
+
+            for (int i = 0, j = 0; i < height && j < width; ) {
                 String s1 = "*";
                 String s2 = " ";
 
@@ -16,21 +24,23 @@ public class Printer {
                     s2 = temp;
                 }
                 if (j % 2 == 0) {
-                    System.out.print(s1);
+                    sb.append(s1);
                 } else {
-                    System.out.print(s2);
+                    sb.append(s2);
                 }
                 j++;
-                if (j == width) {
-                    System.out.println();
+                if (j == width && i != height-1) {
+                    sb.append("\n");
                     i++;
                     j = 0;
                 }
             }
-            System.out.println();
+           // sb.append("\n");
+
         } catch (Exception e) {
-            System.out.println("Invalid format input");
+            sb.append("Invalid format input");
         }
+        return sb.toString();
     }
 
 
