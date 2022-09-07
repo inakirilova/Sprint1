@@ -1,0 +1,11 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+*.xml
+.idea
+../.idea
+../../.idea
+../task01
+../task02
+/target
+/library
