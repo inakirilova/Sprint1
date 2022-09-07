@@ -25,3 +25,4 @@ Input format (separator - comma):<br/>\<name>, \<side length>, \<side length>, \
 3. \[Triangle 1]: 1.5cm
 
 ### Launching the program:
+As a user you can start the project by running the class Main in src/main/java and follow the instruction on the console. 
