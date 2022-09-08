@@ -6,7 +6,7 @@ the application should not crash.
 2.	Running without parameters displays instructions for using the program.
 3.	Parameters are passed in the order given in the job description.
 
-## 1.	SortingTriangles
+## 3.	SortingTriangles
 
 Develop a console program that prints triangles in descending order of their area. After adding each new
 triangle, the program asks if the user wants to add another one. If the user answers “y” or “yes” (case
