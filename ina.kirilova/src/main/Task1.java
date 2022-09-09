@@ -1,4 +1,4 @@
-package ina.kirilova.src;
+package main;
 
 import java.util.*;
 
