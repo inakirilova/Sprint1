@@ -38,7 +38,7 @@ public class Envelope {
             float height = Float.parseFloat(size2);
 
             if (!areNumsPositive(width, height)) {
-                System.out.println("Sizes must be >= 0!");
+                System.out.println("Sizes must be positive!");
                 inputValues(envelope, number, scanner);
             }
             envelope.setHeight(height);
@@ -49,6 +49,6 @@ public class Envelope {
         }
     }
     private static boolean areNumsPositive(float size1, float size2) {
-        return  !(size1 < 0 || size2 < 0);
+        return  !(size1 <= 0 || size2 <= 0);
     }
 }
