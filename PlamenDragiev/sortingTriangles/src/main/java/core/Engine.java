@@ -2,9 +2,9 @@ package core;
 
 public interface Engine {
 
-    boolean start();
+    void start();
 
-    boolean doWork(String input);
+    void doWork(String input);
 
     void stop();
 }
