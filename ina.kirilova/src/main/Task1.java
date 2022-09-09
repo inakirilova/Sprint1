@@ -38,7 +38,8 @@ public class Task1 {
                 }
             }
             for (int c = 0; c < board.length; c++) {
-                System.out.println(Arrays.toString(board[c]));
+                String str = Arrays.toString(board[c]);
+                System.out.println(str.replace(", ",""));
             }
 
         }
