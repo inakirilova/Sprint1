@@ -1,17 +1,20 @@
 package main;
 
-import java.util.*;
-import java.lang.*;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.TreeMap;
 
 public class Task3 {
 
-    public static TreeMap<String, Float> triagalnici = new TreeMap<>();
 
-    public static <K, V extends Comparable<V>> Map<K, V> valueSort(final Map<K, V> map) {
-        Comparator<K> valueComparator = new Comparator<K>() {
+    private static <K, V extends Comparable<V>> Comparator<Double> getComparator() {
+        return new Comparator<Double>() {
             @Override
-            public int compare(K o2, K o1) {
-                int comp = map.get(o1).compareTo(map.get(o2));
+            public int compare(Double o2, Double o1) {
+                int comp = o1.compareTo(o2);
                 if (comp == 0) {
                     return 1;
                 } else {
@@ -19,58 +22,86 @@ public class Task3 {
                 }
             }
         };
-        Map<K, V> sorted = new TreeMap<K, V>(valueComparator);
-        sorted.putAll(map);
-        System.out.print(sorted);
-        return sorted;
-
-    }
-    public static void getarea() {
-
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter name and sides");
-        String infotriangle = sc.nextLine();
-        String[] info = infotriangle.split(",");
-        String name = info[0].trim();
-        float strana1 = Float.parseFloat(info[1].trim());
-        float strana2 = Float.parseFloat(info[2].trim());
-        float strana3 = Float.parseFloat(info[3].trim());
-
-        float semiper = (strana1 + strana2 + strana3) / 2;
-        float area = (float) Math.sqrt(semiper * (semiper - strana1) * (semiper - strana2) * (semiper - strana3));
-        System.out.print(area);
-
-        triagalnici.put(name, area);
-
     }
 
+    public static double getArea(double side1, double side2, double side3, String name) {
 
-    public static void cont() {
-        System.out.print("Do you want to continue? Yes/No");
-        Scanner sc = new Scanner(System.in);
-        String answer = sc.nextLine();
+        double halfPerimeter = (side1 + side2 + side3) / 2;
+        double area = Math.sqrt(halfPerimeter * (halfPerimeter - side1) * (halfPerimeter - side2) * (halfPerimeter - side3));
+        System.out.println(name + " - " + area);
 
+        return area;
+    }
+
+    private static boolean shouldContinueProgram(String answer) {
+        boolean continueProgram;
         switch (answer) {
             case "yes", "YES", "Yes", "y", "Y": {
-                getarea();
-                cont();
+                continueProgram = true;
                 break;
             }
             case "no", "No", "NO", "n", "N": {
-                System.out.print("this is the end of the program");
+                continueProgram = false;
                 break;
             }
             default:
-                System.out.print("Enter a valid option");
+                continueProgram = false;
+                System.out.print("Invalid option!");
                 break;
         }
+        return continueProgram;
     }
 
 
     public static void main(String[] arguments) {
-        getarea();
-        cont();
-        valueSort(triagalnici);
+        Map<Double, String> triangles = new TreeMap<>(getComparator());
 
+        Scanner sc = new Scanner(System.in);
+        String infoTriangle;
+
+        boolean continueProgram;
+        do {
+            System.out.print("Enter name and sides");
+            infoTriangle = sc.next();
+            String[] info = infoTriangle.split(",");
+
+            String name = info[0].trim();
+            double side1;
+            double side2;
+            double side3;
+            try {
+                side1 = Double.parseDouble(info[1].trim());
+                side2 = Double.parseDouble(info[2].trim());
+                side3 = Double.parseDouble(info[3].trim());
+                if (side1 <= 0 || side2 <= 0 || side3 <= 0) {
+                    throw new NumberFormatException("Negative number!");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid number!");
+                return;
+            }
+            Double area = getArea(side1, side2, side3, name);
+
+            triangles.put(area, name);
+
+            System.out.print("Do you want to continue? Yes/No");
+            String answer = sc.next();
+
+            continueProgram = shouldContinueProgram(answer);
+            System.out.println();
+
+        } while (continueProgram);
+
+        printTriangles(triangles);
+
+
+    }
+
+    public static Map<Double, String> printTriangles(Map<Double, String> sortedTriangles) {
+        System.out.println("=============Triangle List==============");
+        for (Map.Entry<Double, String> triangle : sortedTriangles.entrySet()) {
+            System.out.println("[" + triangle.getValue() + "]: " + BigDecimal.valueOf(triangle.getKey()).setScale(2, RoundingMode.DOWN));
+        }
+        return sortedTriangles;
     }
 }
