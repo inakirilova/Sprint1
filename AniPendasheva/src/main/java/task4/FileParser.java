@@ -26,12 +26,11 @@ public class FileParser {
         while (file.hasNextLine()) {
             sb.append(file.nextLine()).append(System.lineSeparator());
         }
-        String fileContents = sb.toString();
         file.close();
 
+        String fileContents = sb.toString();
         String fileContentNew = fileContents.replaceAll(strToFind, strToReplace);
         FileWriter writer = new FileWriter(path);
-        System.out.println("new data: " + fileContentNew);
         writer.append(fileContentNew);
         writer.flush();
 
