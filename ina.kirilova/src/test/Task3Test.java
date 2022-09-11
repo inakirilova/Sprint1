@@ -11,9 +11,14 @@ import static org.junit.jupiter.api.Assertions.*;
 class Task3Test {
 
     @Test
-    void valueSort() {
+    void findArea() {
         double area = Task3.getArea(3, 4, 5, "Ina");
         assertEquals(6.0, area);
+    }
+    @Test
+    void wrongArea() {
+        double area = Task3.getArea(1, 2, 3, "Ina");
+        assertEquals(0, area);
     }
 
 }
