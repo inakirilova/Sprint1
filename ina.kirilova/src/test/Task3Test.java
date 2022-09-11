@@ -15,8 +15,9 @@ class Task3Test {
         double area = Task3.getArea(3, 4, 5, "Ina");
         assertEquals(6.0, area);
     }
+
     @Test
-    void wrongArea() {
+    void zeroArea() {
         double area = Task3.getArea(1, 2, 3, "Ina");
         assertEquals(0, area);
     }
