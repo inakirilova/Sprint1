@@ -1,5 +1,6 @@
 package test;
 
+import main.Task2;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,20 +8,21 @@ import static org.junit.jupiter.api.Assertions.*;
 class Task2Test {
 
     @Test
-    void compare() {
-        double side1 = 4;
-        double side2 = 3;
-        String message = "first is bigger";
-//        assertEquals(message, compare(side1,side2));
+    void compare1() {
+        boolean compare = Task2.compareEnvelopes("Ina", "Kirilova", 10, 20, 15, 1);
+        assertTrue(compare);
     }
 
     @Test
-    void contcomp() {
-        String answer = "yes";
-        assertEquals("yes", answer);
+    void compare2() {
+        boolean compare = Task2.compareEnvelopes("Ina", "Kirilova", 10, 15, 20, 20);
+        assertTrue(compare);
     }
 
     @Test
-    void main() {
+    void compareNegative() {
+        boolean compare = Task2.compareEnvelopes("Ina", "Kirilova", 10, 20, 5, 30);
+        assertFalse(compare);
     }
+
 }
