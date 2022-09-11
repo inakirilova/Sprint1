@@ -10,7 +10,7 @@ public class FileParser {
 
         while (file.hasNext()) {
             String wordToCompare = file.next();
-            if (strToCount.equals(wordToCompare)) {
+            if (strToCount.equalsIgnoreCase(wordToCompare)) {
                 count++;
             }
         }
