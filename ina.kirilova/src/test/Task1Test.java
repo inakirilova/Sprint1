@@ -7,31 +7,23 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Task1Test {
 
+    public static final String WHITE_SYMBOL = "w";
+    public static final String BLACK_SYMBOL = "b";
+
     @Test
-    public void draw() {
-
-        String [][] actual = new String[5][5];
-        assertEquals(5,actual.length);
-        assertEquals(5,actual[0].length);
-
-    }
-    public void empty() throws IllegalArgumentException{
-        IllegalArgumentException e = new IllegalArgumentException();
-        String [][] board = new String[0][0];
-        assertEquals(e, board.length);
-        assertEquals(e, board[0].length);
-    }
-    public void invalidSize() throws IllegalArgumentException{
-        IllegalArgumentException i = new IllegalArgumentException();
-        String [][] actual2 = new String [-1][1];
-        String [][] actual3 = new String[1][-1];
-        assertAll();{
-            assertEquals(i, actual2.length);
-            assertEquals(i, actual3[0].length);
-        }
+    public void testBuildChessBoard() {
+        String[][] chessBoard = Task1.buildChessBoard(2, 2);
+        assertEquals(2, chessBoard.length);
+        assertEquals(2, chessBoard[0].length);
+        assertEquals(WHITE_SYMBOL, chessBoard[0][0]);
+        assertEquals(BLACK_SYMBOL, chessBoard[0][1]);
+        assertEquals(WHITE_SYMBOL, chessBoard[1][1]);
+        assertEquals(BLACK_SYMBOL, chessBoard[1][0]);
     }
 
     @Test
-    void main() {
+    public void testNegativeInput() {
+        String[][] chessBoard = Task1.buildChessBoard(-1, 2);
+        assertNull(chessBoard);
     }
 }
