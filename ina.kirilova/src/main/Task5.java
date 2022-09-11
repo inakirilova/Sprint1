@@ -22,7 +22,7 @@ public class Task5 {
         String[] roundnumbers = new String[]{"", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
         String[] hundreds = new String[]{"Hundred", "Thousand"};
 
-        System.out.print(String.valueOf(num) + ": ");
+//        System.out.print(String.valueOf(num) + ": ");
 
         if (len == 1) {
             System.out.println(onedigit[num[0] - '0']);
@@ -73,7 +73,7 @@ public class Task5 {
         System.out.print("enter number");
         String number = sc.nextLine();
         String numberWithWords = numberConverters(number);
-        System.out.println(numberWithWords);
+//        System.out.println(numberWithWords);
 
     }
 }
