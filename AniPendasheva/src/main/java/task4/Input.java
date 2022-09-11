@@ -7,7 +7,6 @@ import java.util.Scanner;
 import static task4.FileParser.countWordInFile;
 import static task4.FileParser.replaceStrInFile;
 
-
 public class Input {
     static void inputValues(Scanner scanner) throws IOException {
         System.out.println("The fllowing program has 2 mods (each with different input) - word counter or word replacer!");

@@ -17,12 +17,12 @@ class FileParserTest {
 
         assertAll(
                 () -> assertEquals(2, FileParser.countWordInFile(new Scanner(new File(path)), "aba"), "Number of str 'aba' in file"),
-                () -> assertEquals(0, FileParser.countWordInFile(new Scanner(new File(path)), "aba bala"), "Number of str 'aba bala' in file"),
+                () -> assertEquals(1, FileParser.countWordInFile(new Scanner(new File(path)), "aba bala"), "Number of str 'aba bala' in file"),
                 () -> assertEquals(2, FileParser.countWordInFile(new Scanner(new File(path)), "bala"), "Number of str 'bala' in file"),
                 () -> assertEquals(0, FileParser.countWordInFile(new Scanner(new File(path)), "alabala"), "Number of str 'alabala' in file")
         );
     }
-    
+
     @Test
     void replaceStrInFile() {
         String path = "C:/Users/user/Desktop/testFileToParse.txt";
