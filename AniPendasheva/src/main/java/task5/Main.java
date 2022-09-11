@@ -31,6 +31,11 @@ public class Main {
         nw.setNumWord("1000000000");
         System.out.println(nw);
 
+        nw.setNumWord("1123456789");
+        System.out.println(nw);
+        nw.setNumWord(Integer.MAX_VALUE + "");
+        System.out.println(nw);
+
     }
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);

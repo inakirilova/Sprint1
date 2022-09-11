@@ -4,7 +4,7 @@ public class NumberWord {
     private int number;
     private String numWord;
 
-    public String convertNum(int num) throws Exception {
+    private String convertNum(int num) throws Exception {
         switch (num) {
             case 0:
                 return "";
@@ -30,7 +30,7 @@ public class NumberWord {
         throw new Exception("Invalid number");
     }
 
-    public String convertSecondToLast(int num, int nextNum) throws Exception {
+    private String convertSecondToLast(int num, int nextNum) throws Exception {
         switch (num) {
             case 0:
                 return "";
@@ -77,14 +77,14 @@ public class NumberWord {
         throw new Exception("Invalid number");
     }
 
-    public void setNumWord(String numWord) throws Exception {
+    public String setNumWord(String numWord) throws Exception {
         this.number = Integer.parseInt(numWord);
         StringBuilder sb = new StringBuilder();
         int lastNum = Integer.parseInt(numWord.charAt(numWord.length() - 1) + "");
 
-        if (numWord.length() == 1 && Character.isDigit(numWord.charAt(0))) {
+        if (numWord.equals("0")) {
             this.numWord = "zero";
-            return;
+            return this.numWord;
         }
 
         for (int i = 0; i < numWord.length() - 1; i++) {
@@ -109,9 +109,11 @@ public class NumberWord {
                 sb.append(addNumWord(num, " million "));
             } else if (i == numWord.length() - 4) {
                 sb.append(addNumWord(num, " thousand "));
-            } else if (i == numWord.length() - 3) {
+            } else if (i == numWord.length() - 3 || i == numWord.length() - 9 ||
+                       i == numWord.length() - 6) {
                 sb.append(addNumWord(num, " hundred "));
-            } else if (i == numWord.length() - 2) {
+            } else if (i == numWord.length() - 2 || i == numWord.length() - 5 ||
+                       i == numWord.length() - 8) {
                 if (num != 0) {
                     String toAdd = convertSecondToLast(num, lastNum);
                     sb.append(toAdd).append(" ");
@@ -124,7 +126,11 @@ public class NumberWord {
             sb.append(convertNum(lastNum));
         }
 
+        if (sb.charAt(sb.length() - 1) == ' ') {
+            sb.deleteCharAt(sb.length() - 1);}
+
         this.numWord = sb.toString();
+        return this.numWord;
     }
 
     private String addNumWord(int num, String numName) throws Exception {
