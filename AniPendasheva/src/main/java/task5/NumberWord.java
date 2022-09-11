@@ -4,7 +4,7 @@ public class NumberWord {
     private int number;
     private String numWord;
 
-    private String convertNum(int num) throws Exception {
+    private String convertNum(int num) {
         switch (num) {
             case 0:
                 return "";
@@ -27,10 +27,10 @@ public class NumberWord {
             case 9:
                 return "nine";
         }
-        throw new Exception("Invalid number");
+        return "Invalid number";
     }
 
-    private String convertSecondToLast(int num, int nextNum) throws Exception {
+    private String convertSecondToLast(int num, int nextNum) {
         switch (num) {
             case 0:
                 return "";
@@ -74,10 +74,10 @@ public class NumberWord {
             case 9:
                 return "ninety";
         }
-        throw new Exception("Invalid number");
+       return "Invalid number";
     }
 
-    public String setNumWord(String numWord) throws Exception {
+    public String setNumWord(String numWord) {
         this.number = Integer.parseInt(numWord);
         StringBuilder sb = new StringBuilder();
         int lastNum = Integer.parseInt(numWord.charAt(numWord.length() - 1) + "");
@@ -130,10 +130,11 @@ public class NumberWord {
             sb.deleteCharAt(sb.length() - 1);}
 
         this.numWord = sb.toString();
+
         return this.numWord;
     }
 
-    private String addNumWord(int num, String numName) throws Exception {
+    private String addNumWord(int num, String numName)  {
         StringBuilder sb = new StringBuilder();
         if (num != 0) {
             sb.append(convertNum(num));

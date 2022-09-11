@@ -33,6 +33,7 @@ public class Main {
 
         nw.setNumWord("1123456789");
         System.out.println(nw);
+
         nw.setNumWord(Integer.MAX_VALUE + "");
         System.out.println(nw);
 
@@ -41,7 +42,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         testingValues();
-        System.out.println("Type in number to be converted to word");
+        System.out.println("Type in Integer number to be converted to word");
         inputValues(scanner);
 
     }
