@@ -21,6 +21,12 @@ public class Envelope {
         if (this.height >= envelope.width && this.width >= envelope.height) {
             return true;
         }
+        if (this.height <= envelope.height && this.width <= envelope.width) {
+            return true;
+        }
+        if (this.height <= envelope.width && this.width <= envelope.height) {
+            return true;
+        }
 
         return false;
     }
@@ -48,7 +54,12 @@ public class Envelope {
             inputValues(envelope, number, scanner);
         }
     }
-    private static boolean areNumsPositive(float size1, float size2) {
+    public static boolean areNumsPositive(float size1, float size2) {
         return  !(size1 <= 0 || size2 <= 0);
+    }
+
+    public Envelope(float height, float width) {
+        this.height = height;
+        this.width = width;
     }
 }
