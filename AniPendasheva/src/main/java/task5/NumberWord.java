@@ -103,34 +103,16 @@ public class NumberWord {
                 continue;
             }
 
-            if (i == numWord.length() - 10 ) {
-                if (num!=0) {
-                    sb.append(convertNum(num));
-                    sb.append(" billion ");
-                }
-            }
-            if (i == numWord.length() - 7 ) {
-                if (num!=0) {
-                    sb.append(convertNum(num));
-                    sb.append(" million ");
-                }
-            }
-            if (i == numWord.length() - 4) {
-                if (num!=0) {
-                    sb.append(convertNum(num));
-                    sb.append(" thousand ");
-                }
-            }
-
-            if (i == numWord.length() - 3) {
-                if (num!=0) {
-                    sb.append(convertNum(num));
-                    sb.append(" hundred ");
-                }
-            }
-
-            if (i == numWord.length() - 2) {
-                if (num!=0) {
+            if (i == numWord.length() - 10) {
+                sb.append(addNumWord(num, " billion "));
+            } else if (i == numWord.length() - 7) {
+                sb.append(addNumWord(num, " million "));
+            } else if (i == numWord.length() - 4) {
+                sb.append(addNumWord(num, " thousand "));
+            } else if (i == numWord.length() - 3) {
+                sb.append(addNumWord(num, " hundred "));
+            } else if (i == numWord.length() - 2) {
+                if (num != 0) {
                     String toAdd = convertSecondToLast(num, lastNum);
                     sb.append(toAdd).append(" ");
                 }
@@ -143,6 +125,16 @@ public class NumberWord {
         }
 
         this.numWord = sb.toString();
+    }
+
+    private String addNumWord(int num, String numName) throws Exception {
+        StringBuilder sb = new StringBuilder();
+        if (num != 0) {
+            sb.append(convertNum(num));
+            sb.append(numName);
+        }
+
+        return sb.toString();
     }
 
     @Override

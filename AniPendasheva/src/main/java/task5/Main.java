@@ -28,6 +28,9 @@ public class Main {
         nw.setNumWord("-1000");
         System.out.println(nw);
 
+        nw.setNumWord("1000000000");
+        System.out.println(nw);
+
     }
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
