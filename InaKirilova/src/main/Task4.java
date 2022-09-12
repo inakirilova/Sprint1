@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Task4 {
     public static void read() throws IOException {
 
-        BufferedReader in = new BufferedReader(new FileReader("src/resources/text.txt"));
+        BufferedReader in = new BufferedReader(new FileReader("src/main/resources/text.txt"));
         System.out.print("Enter the word to look for: ");
         Scanner scan = new Scanner(System.in);
 
@@ -35,7 +35,7 @@ public class Task4 {
         System.out.println("Enter what do you want to replace");
         String newtext = sc.nextLine();
         String text = "";
-        BufferedReader reader = new BufferedReader(new FileReader("src/resources/text.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/text.txt"));
         String line = reader.readLine();
         while (line != null) {
 
@@ -45,7 +45,7 @@ public class Task4 {
 
         }
         String newContent = text.replaceAll(oldtext, newtext);
-        FileWriter writer = new FileWriter("src/resources/text.txt");
+        FileWriter writer = new FileWriter("src/main/resources/text.txt");
         writer.write(newContent);
         System.out.println("Write successful");
         reader.close();
