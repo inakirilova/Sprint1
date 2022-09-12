@@ -21,10 +21,10 @@ public class Envelope {
         if (this.height >= envelope.width && this.width >= envelope.height) {
             return true;
         }
-        if (this.height <= envelope.width && this.width <= envelope.height) {
+        if (this.height <= envelope.height && this.width <= envelope.width) {
             return true;
         }
-        if (this.height <= envelope.height && this.width <= envelope.width) {
+        if (this.height <= envelope.width && this.width <= envelope.height) {
             return true;
         }
 
@@ -49,7 +49,7 @@ public class Envelope {
             float height = Float.parseFloat(size2);
 
             if (!areNumsPositive(width, height)) {
-                System.out.println("Sizes must be >= 0!");
+                System.out.println("Sizes must be positive!");
                 inputValues(envelope, number, scanner);
             }
             envelope.setHeight(height);
@@ -61,5 +61,10 @@ public class Envelope {
     }
     public static boolean areNumsPositive(float size1, float size2) {
         return  !(size1 <= 0 || size2 <= 0);
+    }
+
+    public Envelope(float height, float width) {
+        this.height = height;
+        this.width = width;
     }
 }
