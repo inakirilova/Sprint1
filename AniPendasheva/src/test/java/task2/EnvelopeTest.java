@@ -19,6 +19,7 @@ class EnvelopeTest {
                 () ->  assertEquals(true , new Envelope(1,4).isFittable(new Envelope(2,6)),"1x4 fit in 2x6"),
                 () ->  assertEquals(false , new Envelope(1,4).isFittable(new Envelope(2,3)),"1x4 fit in 2x3"),
                 () ->  assertEquals(true , new Envelope(1,4).isFittable(new Envelope(5,2)),"1x4 fit in 5x2"));
+
     }
 
     @Test

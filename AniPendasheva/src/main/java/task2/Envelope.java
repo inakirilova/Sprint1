@@ -14,7 +14,7 @@ public class Envelope {
         this.width = 0;
     }
 
-    boolean isFittable(Envelope envelope) {
+    public boolean isFittable(Envelope envelope) {
         if (this.height >= envelope.height && this.width >= envelope.width) {
             return true;
         }
@@ -29,6 +29,11 @@ public class Envelope {
         }
 
         return false;
+    }
+
+    public Envelope(float height, float width) {
+        this.height = height;
+        this.width = width;
     }
 
     public void setHeight(float height) {
