@@ -13,7 +13,7 @@ class BoardUtilsTest {
     class ParseIntOrNull{
 
         @ParameterizedTest
-        @ValueSource(strings = {"1","-1","0","2","232","4343","-2323"})
+            @ValueSource(strings = {"1","-1","0","2","232","4343","-2323"})
         void should_ReturnInteger_When_Input_Is_Number(String valueOfString){
             //given
             Integer number = Integer.parseInt(valueOfString);
@@ -22,7 +22,6 @@ class BoardUtilsTest {
             //then
             assertTrue(expected);
         }
-
 
         @ParameterizedTest
         @ValueSource(strings = {"ewqe","-13eq","0qe","c","ew.,.","","-=+"})
