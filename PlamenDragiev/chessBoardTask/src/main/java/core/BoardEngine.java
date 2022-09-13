@@ -9,41 +9,35 @@ public class BoardEngine implements Engine {
     private Reader reader;
     private BoardPrinter printer;
 
-
-    public BoardEngine(BoardPrinter printer, Reader reader) {
-        this.printer = printer;
-        this.reader = reader;
-    }
-
     @Override
-    public void start() {
-        printer.printInstructions();
-        String input = reader.readLine();
-
-        while (!"exit".equals(input)) {
-            doWork(input);
+    public void start(String[] args) {
+        if (args.length < 1) {
             printer.printInstructions();
-            input = reader.readLine();
+            String input = reader.readLine();
+            args = input.split("\\s");
+            doWork(args);
+        } else {
+            doWork(args);
         }
         stop();
     }
 
     @Override
-    public void doWork(String input) {
-        String[] args = input.split("\\s");
+    public boolean doWork(String[] args) {
         if (!checkParametersCount(args)) {
             printer.printError();
-            return;
+            printer.printInstructions();
+            return false;
         }
-        if (!checkParametersRange(args)) {
+        if (!checkParametersRange(args[0], args[1])) {
             printer.printError();
-            return;
+            return false;
         }
         int height = Integer.parseInt(args[0]);
         int width = Integer.parseInt(args[1]);
 
         printer.printBoard(generateBoard(height, width));
-        return;
+        return true;
 
     }
 
@@ -58,20 +52,13 @@ public class BoardEngine implements Engine {
         return parametersCount == requiredParametersCount;
     }
 
-    private boolean checkParametersRange(String[] args) {
-        Integer height = BoardUtils.parseIntOrNull(args[0]);
-        Integer width = BoardUtils.parseIntOrNull(args[1]);
+    private boolean checkParametersRange(String first, String second) {
+        Integer height = BoardUtils.parseIntOrNull(first);
+        Integer width = BoardUtils.parseIntOrNull(second);
         return (height != null && height > 0) && (width != null && width > 0);
     }
 
-    /**
-     * Generate 2D Matrix with given dimensions.
-     * Fills it with '*' -> when row is even number == coll is even number
-     * Fills it with ' ' -> when its not.
-     * @param height
-     * @param width
-     * @return 2D matrix of chars;
-     */
+   //generate board with height and width by given dimensions (same as chessboard)
     private char[][] generateBoard(int height, int width) {
         char[][] board = new char[height][width];
         for (int col = 0; col < height; col++) {
@@ -84,6 +71,25 @@ public class BoardEngine implements Engine {
             }
         }
         return board;
+    }
+
+
+    public Reader getReader() {
+        return reader;
+    }
+
+    public BoardPrinter getPrinter() {
+        return printer;
+    }
+
+    public BoardEngine setReader(Reader reader) {
+        this.reader = reader;
+        return this;
+    }
+
+    public BoardEngine setPrinter(BoardPrinter printer) {
+        this.printer = printer;
+        return this;
     }
 
 
