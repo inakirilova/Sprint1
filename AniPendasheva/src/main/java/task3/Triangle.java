@@ -55,6 +55,7 @@ public class Triangle {
                 Collections.swap(al,j,indexOfMax);
             }
         }
+        outPutPrint();
     }
 
     static Compare comp = (Triangle tt1, Triangle tt2) -> {

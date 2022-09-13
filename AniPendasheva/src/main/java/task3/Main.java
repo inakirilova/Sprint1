@@ -33,10 +33,11 @@ public class Main {
         String toContinue = scanner.nextLine();
         if (toContinue.equalsIgnoreCase("y") || toContinue.equalsIgnoreCase("yes")) {
             inputValues(scanner);
+        } else  {
+            sortByAreaDesc(al, comp);
         }
     }
 
-    //round to two .00
     public static void outPutPrint() {
         StringBuilder sb = new StringBuilder();
         int number = 1;
@@ -58,7 +59,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Type in triangles to be sorted by area");
         inputValues(scanner);
-        sortByAreaDesc(al, comp);
-        outPutPrint();
+
     }
 }
