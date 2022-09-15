@@ -1,0 +1,21 @@
+string - The given input is not valid.
+012 - The given input is not valid.
+-45 - The given input is not valid.
+
+9223372036854775807 - the bigggest possible for validation
+1000100 - one million one hndred
+1000000 - one million
+10000 - ten thousand
+32000 - thirty two thousand
+21500 - bg
+100 - one hundred
+   45 - forty five
+1 - one
+0 - zero
+
+-----------------
+1'515'151'551'148
+
+scalePrefix = 4
+remainder = 1
+

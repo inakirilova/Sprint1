@@ -1,32 +1,36 @@
-import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
+import processing.Board;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BoardTests {
-    String[][] newBoard = Board.boardCreate(2, 3);
+    String[][] newBoard = Board.boardCreate(new int[]{2, 3});
+    String[][] mockBoard = new String[][] {{"*", " ", "*"},
+                                           {" ", "*", " "}};
 
     @Test
-    public void testBoardBorders() {
-        Assert.assertEquals(2, newBoard.length);
-        Assert.assertEquals(3, newBoard[0].length);
+    @DisplayName("To confirm the board is created correctly.")
+    public void boardCreateBordersTest() {
+        assertAll(
+                () -> assertEquals(2, newBoard.length),
+                () -> assertEquals(3, newBoard[0].length)
+        );
     }
 
     @Test
-    public void testBoardCellsFirstRow() {
-        Assert.assertEquals("*", newBoard[0][0]);
-        Assert.assertEquals(" ", newBoard[0][1]);
-        Assert.assertEquals("*", newBoard[0][2]);
+    @DisplayName("To confirm the correct filling of the board. ")
+    public void boardCreateCellsTest() {
+        assertAll(
+                () -> assertArrayEquals(mockBoard, newBoard)
+        );
     }
+
 
     @Test
-    public void testBoardCellsSecondRow() {
-        Assert.assertEquals(" ", newBoard[1][0]);
-        Assert.assertEquals("*", newBoard[1][1]);
-        Assert.assertEquals(" ", newBoard[1][2]);
-    }
-
-    @Test(expected = NegativeArraySizeException.class)
+    @DisplayName("To throw exception for invalid params. ")
     public void testIncorrectData() {
-    String[][] newBoardOne = Board.boardCreate(-4, 3);
-    Assert.assertEquals(-4, newBoardOne.length);
+    assertThrows(NegativeArraySizeException.class, () -> Board.boardCreate(new int[]{-4, 3}));
+    assertThrows(NegativeArraySizeException.class, () -> Board.boardCreate(new int[]{4, -3}));
     }
 }

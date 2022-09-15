@@ -1,0 +1,16 @@
+first, 3.4, 4.5, 5.6
+first, 12, 12, 20.5
+second, 10, fifteen, 20
+second, 10, -15, 20
+third, 20, 30, 40
+forth, 7.8, 6.7, 9
+fifth, 3.4, 4.5, 5.6
+sixth, 3, 4, 5
+
+expected:
+1. [Triangle third]: 290.47cm
+2. [Triangle second]: 72.62cm
+3. [Triangle forth]: 25.39cm
+4. [Triangle fifth]: 7.65cm
+5. [Triangle first]: 7.65cm
+6. [Triangle sixth]: 6cm
