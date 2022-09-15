@@ -1,5 +1,6 @@
-import textfile_modifier.RequestInput;
-import textfile_modifier.RequestProcessor;
+
+import static services.InputRequester.requestInput;
+import static services.RequestProcessor.processRequester;
 
 public class Main {
 
@@ -8,9 +9,9 @@ public class Main {
     /*
     The file path is hardcoded in package common; Messages.FILE_PATH
     As a user, if you want to work with your local file
-    then you need to change the FILE_PATH value with the path of you local file.
+    then you need to change the common.Messages.FILE_PATH value with the path of you local file.
      **/
 
-        RequestProcessor.processInputRequest(RequestInput.requestInput());
+        System.out.println(processRequester(requestInput()));
     }
 }

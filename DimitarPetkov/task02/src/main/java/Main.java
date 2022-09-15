@@ -1,24 +1,31 @@
-import common.ConstantMessages;
+
+import static common.ConstantMessages.INITIAL_MESSAGE;
+import static common.ConstantMessages.TO_CONTINUE;
+import static input.RequestData.getSide;
+import static process.DataValidator.responseAnalyze;
+import static process.EnvelopeAnalysis.compareEnvelopes;
 
 import java.util.Scanner;
+
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please, describe two envelopes, by their sides.\nAllowed data: numbers");
 
+        System.out.println(INITIAL_MESSAGE);
         boolean gameContinue = true;
-        while(gameContinue) {
-            float firstEnvelopeSideX = RequestData.getSide("First", "A");
-            float firstEnvelopeSideY = RequestData.getSide("First", "B");
-            float secondEnvelopeSideX = RequestData.getSide("Second", "C");
-            float secondEnvelopeSideY = RequestData.getSide("Second", "D");
 
-            String result = EnvelopeAnalysis.compareEnvelopes(firstEnvelopeSideX, firstEnvelopeSideY,
-                    secondEnvelopeSideX, secondEnvelopeSideY);
-            System.out.println(result);
-            System.out.println(ConstantMessages.TO_CONTINUE);
-            gameContinue = DataValidator.responseAnalyze(scanner.nextLine());
+        while(gameContinue) {
+
+            System.out.println(compareEnvelopes(
+                    getSide("One", "A"),
+                    getSide("One", "B"),
+                    getSide("Two", "C"),
+                    getSide("Two", "D")));
+
+            System.out.println(TO_CONTINUE);
+
+            gameContinue = responseAnalyze(scanner.nextLine());
         }
     }
 }
