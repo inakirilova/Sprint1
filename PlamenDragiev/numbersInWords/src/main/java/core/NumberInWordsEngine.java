@@ -6,6 +6,7 @@ import ui.Reader;
 
 
 public class NumberInWordsEngine implements Engine {
+    private static final int RANGE = 999;
     private Reader reader;
     private NumberInWordsPrinter printer;
 
@@ -59,20 +60,24 @@ public class NumberInWordsEngine implements Engine {
     }
 
     @Override
-    public void doWork(String input) {
+    public boolean doWork(String input) {
         String[] splitInput = input.split("\\s");
 
         if (splitInput.length != 1) {
             printer.printError();
-            return;
+            return false;
         }
         if (!checkInput(input)) {
             printer.printError();
-            return;
+            return false;
+        }
+        if(Integer.parseInt(input) > RANGE){
+            printer.printError();
+            return false;
         }
         String numberInWord = convertNumberToWordUnderThousand(Integer.parseInt(input));
         printer.printResult(numberInWord.trim());
-        return;
+        return true;
     }
 
 
