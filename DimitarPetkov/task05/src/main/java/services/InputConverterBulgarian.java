@@ -32,7 +32,10 @@ public class InputConverterBulgarian {
                         if (inputArray[1].equals("1")) {
                             finalText.add("и");
                             finalText.add(onesPrefixLargeNumbers[scaleTypePrefix + 1]);
-                        } else {
+                        } else if (inputArray[1].equals("2")){
+                            finalText.add("и");
+                            finalText.add(twosPrefixLargeNumbers[scaleTypePrefix + 1]);
+                        } else if (!inputArray[1].equals("0")){
                             finalText.add("и");
                             finalText.add(singleAndTeen[Integer.parseInt(inputArray[1])]);
                         }
@@ -41,6 +44,8 @@ public class InputConverterBulgarian {
                         finalText.add("нула");
 
                     } else if (!inputArray[0].equals("2")){
+                        finalText.add(singleAndTeen[Integer.parseInt(inputArray[0])]);
+                    } else if (inputArray.length <= 1) {
                         finalText.add(singleAndTeen[Integer.parseInt(inputArray[0])]);
                     }
                 }
