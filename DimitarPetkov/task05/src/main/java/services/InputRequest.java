@@ -10,7 +10,7 @@ import static validator.DataValidator.inputDataValidator;
 
 public class InputRequest {
 
-    public static void inputRequester() {
+    public static String inputRequester() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println(REQUEST_INPUT);
@@ -24,6 +24,7 @@ public class InputRequest {
 
         } else {
             System.out.println(INVALID_INPUT);
+            return inputRequester();
         }
     }
 
@@ -33,7 +34,10 @@ public class InputRequest {
         } else if (language.equalsIgnoreCase("BG")) {
             return numberTextConverterBG(request);
         } else {
-            return INVALID_LANGUAGE;
+            Scanner scanner = new Scanner(System.in);
+            System.out.println(INVALID_LANGUAGE + "\n" + CHOOSE_THE_LANGUAGE);
+            language = scanner.nextLine().trim();
+            return languageSeparator(language, request);
         }
     }
 

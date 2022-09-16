@@ -10,8 +10,7 @@ public class FileWriter {
     public static boolean fileWriter(StringBuilder sb) {
 
         try {
-            FileOutputStream fileStreamOut = new FileOutputStream(FILE_PATH);
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileStreamOut);
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(new FileOutputStream(FILE_PATH));
 
             outputStreamWriter.write(sb.toString());
             outputStreamWriter.close();
